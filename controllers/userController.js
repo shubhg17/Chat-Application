@@ -1,4 +1,4 @@
-// all business logic will be written here
+// all business logic will be written here all function logic
 import { User } from "../models/userModel.js"
 import bcrypt from "bcryptjs"
 //here u can write anything xyz abc adadad but we write jwt ki pta rhe ki kya use kr rhe hain 

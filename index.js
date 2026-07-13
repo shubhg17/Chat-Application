@@ -5,7 +5,7 @@ import dotenv from "dotenv"
 dotenv.config({}) //this helps u to load ur .env file
 
 import userRoute from "./routes/userRoute.js"
-
+import messageRoute from "./routes/messageRoute.js"
 import connectDB from "./config/database.js"
 import cookieParser from "cookie-parser"
 const app = express();
@@ -13,6 +13,7 @@ const app = express();
 app.use(express.json())
 app.use(cookieParser())
 app.use("/user" , userRoute)
+app.use("/message" , messageRoute)
 
 //jitni bhi secret cheeze hoti hain like port mongodb url voh sabh hum .env me rkhte hain 
 const PORT = process.env.PORT || 9080;

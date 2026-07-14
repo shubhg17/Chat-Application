@@ -54,11 +54,12 @@ export const sendMessage = async(req , res) => {
 
 export async function getMessage(req , res) {
    try {
+    //me apne url ke andar receiver ki id ko basically pass krdunga joh message ko receive krega 
        const receiverId = req.params.id
        const senderId = req.id
        const conversation = await Conversation.findOne({
            participants:{$all : [senderId , receiverId]}
-       }).populate("messages")
+       }).populate("messages") //populate("messages") messages array ko change nahi karta; woh uske andar stored IDs ko actual Message documents se replace kar deta hai. Isliye conversation.messages return karte hi frontend ko saare messages mil jaate hain.
 
        //this conversation?.messages means ki agar hume conversation model me sender aur receiver ki convo mil jati hain then hum kya krenge unke sare messages ko hum return krdenge as response 
        return res.status(200).json(conversation?.messages)

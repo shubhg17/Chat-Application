@@ -65,6 +65,7 @@ export async function getMessage(req , res) {
        return res.status(200).json(conversation?.messages)
    }
    catch(error) {
+      //to print error
      console.log(error)
    }
 }

@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken"
 const isAuthenticated = async (req , res , next)=>  {
   try {
     const token = req.cookies?.token
+    //401 status code we use for authentication
     if(!token) return res.status(401).json({message: "User not authenticated"})
       //jwt.verify() isme 2 params pass kro first apna token and apni secret key secret key se hi basically yeh verify krta hain
     const decode = await jwt.verify(token , process.env.JWT_SECRET_KEY)

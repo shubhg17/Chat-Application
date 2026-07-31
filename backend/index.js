@@ -3,15 +3,27 @@
 import express from "express"
 import dotenv from "dotenv"
 dotenv.config({}) //this helps u to load ur .env file
-
+//install kro cors ko 
+import cors from "cors"
 import userRoute from "./routes/userRoute.js"
 import messageRoute from "./routes/messageRoute.js"
 import connectDB from "./config/database.js"
 import cookieParser from "cookie-parser"
 const app = express();
 
+//middleware for form
+app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(cookieParser())
+
+//yeh hume banana padta ha as hume btana padta ha ki tum kaha se request mar rhe ho joh abhi origin hamara frontend hain as hum frontend origin se backend ke url pe request marenge 
+const corsOption = {
+    origin:"http://localhost:3000",
+    credentials:true
+}
+
+app.use(cors(corsOption))
+
 app.use("/user" , userRoute)
 app.use("/message" , messageRoute)
 

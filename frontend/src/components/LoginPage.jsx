@@ -1,15 +1,41 @@
 import React from "react"
-import {Link} from "react-router-dom"
+import {Link , useNavigate} from "react-router-dom"
 import {useState} from "react"
+import axios from "axios"
+import toast from "react-hot-toast"
 function LoginPage() {
     const [user , setUser] = useState({
        userName:"",
        password:""
     })
 
-    const handleFormSubmit = (e)=> {
+    const navigate = useNavigate()
+
+    const handleFormSubmit = async (e)=> {
        e.preventDefault()
-       console.log(user)
+      //  console.log(user)
+
+       try {
+          const response = await axios.post("http://localhost:8080/user/login" , user , {
+             headers: {
+                "Content-Type" : "application/json"
+             },
+             withCredentials:true
+          })
+          if(response.data.message) {
+             toast.success(response.data.message)
+             navigate("/")
+          }
+       }
+       catch(error) {
+          toast.error(error.response.data.message)
+          console.log(error)
+       }
+
+      setUser({
+          userName:"",
+          password:""
+      })
     }
 
     return (
@@ -41,7 +67,7 @@ function LoginPage() {
 
                    <p className="text-center font-semibold text-xl mb-2" >Don't have an account ? <Link to="/signup" >SignUp</Link> </p>
 
-                   <button type="submit" className="text-xl font-semibold text-black bg-white w-full p-2 rounded-xl" >Login</button>
+                   <button type="submit" className="text-xl font-semibold text-black bg-white w-full p-2 rounded-xl active:scale-90 " >Login</button>
                    
 
                </form>

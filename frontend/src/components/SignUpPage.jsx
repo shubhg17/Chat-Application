@@ -1,7 +1,13 @@
 
 import React from "react"
 import {Link} from "react-router-dom"
+//with this hook u can navigate easily also this is also one way to route
+import {useNavigate} from "react-router-dom"
 import {useState} from "react"
+import axios from "axios"
+import toast from "react-hot-toast"
+//axios basically ek tool hain joh hume help krta ha apis ko call krne me to use this install npm i axios and we are also installing react-hot-toast using npm i react-hot-toast
+
 const SignUp = () => {
    const [user , setUser]  = useState({
       fullName:"",
@@ -10,10 +16,42 @@ const SignUp = () => {
       confirmPassword:"",
       gender:""
    })
+
+   const navigate = useNavigate()
   
-   const handleFormSubmit = (e)=> {
+   const handleFormSubmit = async (e)=> {
        e.preventDefault();
-      //  console.log(user)
+      //  console.log(user) 
+      //form submit hone ke baad input fields ko khali krdiya
+
+      try {
+         //axios me joh data ata hain voh json m hi hota hain 
+         const response = await axios.post("http://localhost:8080/user/signup" , user , {
+            //cors policy ka error nah aye isliye yeh sab pass krte hain 
+             headers: {
+                "Content-Type" : "application/json"
+             },
+             withCredentials:true
+         })
+         // console.log(response)
+         if(response.data.message) {
+            //toast ke andar ek method hota hain success krke
+             toast.success(response.data.message)
+             navigate("/login")
+         }
+      }
+      catch(error) {
+          toast.error(error.response.data.message)
+          console.log(error)
+      }
+
+      setUser({
+         fullName:"",
+         userName:"",
+         password:"",
+         confirmPassword:"",
+         gender:""
+      })
    }
 
    const handleCheckBox = (gender)=> {
@@ -88,7 +126,7 @@ const SignUp = () => {
 
                    <p className="text-center font-semibold text-xl mb-3" >Already have an account ? <Link to="/login" >Login</Link> </p>
 
-                   <button type="submit" className="text-xl font-semibold text-black bg-white w-full p-2 rounded-xl" >SignUp</button>
+                   <button type="submit" className="text-xl font-semibold text-black bg-white w-full p-2 rounded-xl active:scale-90 " >SignUp</button>
 
                </form>
             </div>

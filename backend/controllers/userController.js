@@ -67,7 +67,15 @@ export async function login(req , res) {
     //maxAge me humne daldiya ek din ka ki ek din baad yeh cookie khatam hojayegi and httpOnly and sameSite also daldiye for security purposes 1d ko mathematically hum ese likhenge 1*(total no of hrs in a day)*(total minutes in one hour)*(total no of seconds in one minute)*(1s me 1000 ms hote hain)
     res.cookie("token" , token  , {maxAge:1*24*60*60*1000 , httpOnly:true , sameSite:"strict" })
 
-    return res.status(200).json({message:"User LoggedIn Successfully"})
+    return res.status(200).json({
+      message:"User LoggedIn Successfully",
+      user: {
+         _id: user._id,
+         fullName:user.fullName,
+         username:user.userName,
+         profilePhoto:user.profilePhoto
+      }
+    })
 
      
    }

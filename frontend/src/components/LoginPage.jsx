@@ -3,11 +3,15 @@ import {Link , useNavigate} from "react-router-dom"
 import {useState} from "react"
 import axios from "axios"
 import toast from "react-hot-toast"
+import {useDispatch} from "react-redux"
+import {setAuthUser} from "../redux/userSlice.js"
 function LoginPage() {
     const [user , setUser] = useState({
        userName:"",
        password:""
     })
+
+    const dispatch = useDispatch()
 
     const navigate = useNavigate()
 
@@ -22,9 +26,11 @@ function LoginPage() {
              },
              withCredentials:true
           })
+          console.log(response)
           if(response.data.message) {
              toast.success(response.data.message)
              navigate("/")
+             dispatch(setAuthUser(response.data.user))
           }
        }
        catch(error) {

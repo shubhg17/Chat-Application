@@ -7,6 +7,7 @@ import {useState} from "react"
 import axios from "axios"
 import toast from "react-hot-toast"
 //axios basically ek tool hain joh hume help krta ha apis ko call krne me to use this install npm i axios and we are also installing react-hot-toast using npm i react-hot-toast
+//axios me hume data automatically json me milta hain this is better than fetchAPI error handling bhi better hoti ha isme
 
 const SignUp = () => {
    const [user , setUser]  = useState({
@@ -26,6 +27,7 @@ const SignUp = () => {
 
       try {
          //axios me joh data ata hain voh json m hi hota hain 
+         //here second parameter voh hain joh hume hamare api me add krvana hain 
          const response = await axios.post("http://localhost:8080/user/signup" , user , {
             //cors policy ka error nah aye isliye yeh sab pass krte hain 
              headers: {
@@ -37,7 +39,7 @@ const SignUp = () => {
          if(response.data.message) {
             //toast ke andar ek method hota hain success krke
              toast.success(response.data.message)
-             navigate("/login")
+             navigate("/")
          }
       }
       catch(error) {

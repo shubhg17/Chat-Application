@@ -1,7 +1,25 @@
 import React from "react"
 import { IoSearch } from "react-icons/io5";
 import OtherUsers from "./OtherUsers";
+import toast from "react-hot-toast"
+import axios from "axios"
+import {useNavigate} from "react-router-dom"
 function SideBar() {
+
+   const navigate  = useNavigate()
+
+   const handleLogOut = async () => {
+      try {
+         const response = await axios.get("http://localhost:8080/user/logout")
+         navigate("/login")
+         toast.success(response.data.message)
+      }
+      catch(error) {
+         toast.error(error.response.data.message)
+         console.log(error)
+      }
+   }
+
   return (
     <>
       <div className="bg-blue-800 text-white h-screen flex justify-center items-center" >
@@ -20,7 +38,7 @@ function SideBar() {
             <p className="bg-blue-300  h-1 w-full mb-2" ></p>
           </form>
           <OtherUsers/>
-          <button className="bg-blue-800 text-white cursor-pointer font-bold px-4 py-2 rounded-xl" >Logout</button>
+          <button onClick={handleLogOut}  className="bg-blue-800 text-white cursor-pointer font-bold px-4 py-2 rounded-xl" >Logout</button>
         </div>
       </div>
     </>

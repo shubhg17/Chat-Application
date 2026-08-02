@@ -1,13 +1,22 @@
 import React from "react"
-
+import {useDispatch , useSelector} from "react-redux"
+import {setSelectedUser} from "../redux/userSlice.js"
 const OtherUser = ({user}) => {
-   const userData = user;
+   const {selectedUser} = useSelector((store)=>store.user)
+   const dispatch = useDispatch()
+
+  const handleSelectedUser = (user)=> {
+      // console.log(user)
+      dispatch(setSelectedUser(user))
+  }
+
   return (
     <>
       <div>
-        <div className="flex items-center gap-3 hover:bg-blue-200 rounded-md py-2 px-2" >
-          <img className="h-12 rounded-full" src={userData.profilePhoto} />
-          <p>{userData.fullName}</p>
+        {/* //abh hum kya krenge basically jonsa user selected hain uska background colour change krdenge and jonsa unselected hain uska vese hi rene denge */}
+        <div onClick={()=>handleSelectedUser(user)}  className={`${selectedUser?._id === user?._id ? "bg-blue-200": ""}   flex items-center gap-3 hover:bg-blue-200 rounded-md py-2 px-2`} >
+          <img className="h-12 rounded-full" src={user.profilePhoto} />
+          <p>{user.fullName}</p>
         </div>
 
       </div>

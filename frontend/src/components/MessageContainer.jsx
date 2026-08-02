@@ -1,6 +1,11 @@
 import React from "react"
 import SendMessage from "./SendMessage.jsx"
+import Messages from "./Messages.jsx"
+import {useSelector} from "react-redux"
 const MessageContainer = () => {
+
+   const {selectedUser} = useSelector((store)=>store.user)
+
   return (
     <>
       <div className="bg-blue-800 text-white h-screen flex items-center justify-center " >
@@ -8,8 +13,12 @@ const MessageContainer = () => {
             
               <p className="bg-blue-300 w-1 h-full mb-2 absolute -left-2" ></p>
               <div className="flex items-center gap-3 bg-black  py-2 px-2" >
-                <img className="h-12 rounded-full" src="https://imgs.search.brave.com/pIOLfh3y8WMK3sKWzhRwdfvEJ7O8q6jLd7wquyZ5q4k/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAyMy8w/NS8yMy8wNS80Ny9z/cGlkZXJtYW4tODAx/MTkyOV82NDAucG5n" />
-                <p>Shubham Ghai</p>
+                <img className="h-12 rounded-full" src={selectedUser?.profilePhoto} />
+                <p>{selectedUser?.fullName}</p>
+             </div>
+
+             <div>
+               <Messages/>
              </div>
 
              <div className="absolute bottom-2 w-[480px] ml-2" >

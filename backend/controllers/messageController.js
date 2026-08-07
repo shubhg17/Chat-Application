@@ -42,7 +42,9 @@ export const sendMessage = async(req , res) => {
 
    //After above now here we will implement SOCKET.IO
 
-   return res.status(201).json({message: "Message send successfully"})
+   return res.status(201).json({
+       newMessage
+   })
 
   } catch (error) {
     console.log(error)

@@ -4,7 +4,7 @@ import axios from "axios"
 import {useState} from "react"
 import useGetOtherUsers from "../customhook/useGetOtherUsers.jsx"
 import {useSelector} from "react-redux"
-const OtherUsers = () => {
+const OtherUsers = ({filteredUser}) => {
  
    //my custom hook to get other users 
    useGetOtherUsers()
@@ -18,7 +18,7 @@ const OtherUsers = () => {
       <div className="h-[400px]  overflow-auto" >
 
         {
-           otherUsers.map((user)=> {
+          filteredUser &&  filteredUser.map((user)=> {
               return (
                  <OtherUser key={user._id} user={user} />
               )

@@ -9,7 +9,7 @@ const Messages = ()=> {
     const {messages}  = useSelector((store)=>store.message)
     if(!messages) return; //early return in react
     return (
-       <div className="px-4 flex-1 overflow-auto" >
+       <div className="px-4 flex-1 h-[400px]  overflow-auto" >
 
         {
           messages?.map((message)=>{

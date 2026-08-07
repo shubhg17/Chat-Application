@@ -14,7 +14,8 @@ const OtherUser = ({user}) => {
     <>
       <div>
         {/* //abh hum kya krenge basically jonsa user selected hain uska background colour change krdenge and jonsa unselected hain uska vese hi rene denge */}
-        <div onClick={()=>handleSelectedUser(user)}  className={`${selectedUser?._id === user?._id ? "bg-blue-200": ""}   flex items-center gap-3 hover:bg-blue-200 rounded-md py-2 px-2`} >
+        {/* //and to check which user is selected as hume background colour change krna hain so selecteduser ki id match krni chaiye user ki id se  */}
+        <div onClick={()=>handleSelectedUser(user)}  className={`${selectedUser?._id === user?._id ? "bg-blue-200 text-black ": ""}   flex items-center gap-3 hover:bg-blue-200 hover:text-black rounded-md py-2 px-2`} >
           <img className="h-12 rounded-full" src={user.profilePhoto} />
           <p>{user.fullName}</p>
         </div>

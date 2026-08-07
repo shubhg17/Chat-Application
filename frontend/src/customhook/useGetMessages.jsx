@@ -11,7 +11,7 @@ const useGetMessages = ()=> {
     useEffect(()=> {
       // console.log("useEffect running");
       fetchData()
-    } , [selectedUser])
+    } , [selectedUser]) //dependency me selectedUser bhi pass krenge as initally jabh page load hoga then selectedUser me null hoga jabh tum select kroge toh voh update hoga but agar tum useEffect me [] yeh de doge and iss useEffect me tum apna data fetch kr rhe ho toh basically voh update nhi krega as fetchData() sirf ek bari call hoga isliye dependency array me yeh selectedUser bhi pass krenge
 
 
     const fetchData = async ()=> {

@@ -14,7 +14,7 @@ const MessageContainer = () => {
 
   useEffect(() => {
     //cleanup krne ke liye we use return keyword and hume ek callback fn ko return krte hain 
-    //navigate()
+    //navigate() // basically jabh tum logout kroge toh tumhara route hain voh change hoga as tum navigate kroge homepage se login page selecteduser kohumne yaha handle krliya but authUser ko yaha handle nhi krenge as agar manlo tum kisi aur page pe jate ho aur agar cleanup krdiya so dusre page pe jate hi tum logout hojaoge so usko handle krliya logout api call jaha kr rhe hain 
     // ↓
     // Route changes
     //       ↓

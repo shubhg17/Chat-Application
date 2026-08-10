@@ -9,7 +9,8 @@ import userRoute from "./routes/userRoute.js"
 import messageRoute from "./routes/messageRoute.js"
 import connectDB from "./config/database.js"
 import cookieParser from "cookie-parser"
-const app = express();
+import {app , server} from "./socket/socket.js"
+// const app = express();
 
 //middleware for form
 app.use(express.urlencoded({extended:true}))
@@ -32,4 +33,4 @@ const PORT = process.env.PORT || 9080;
 
 connectDB()
 
-app.listen(PORT , ()=>console.log(`Server Started At Port ${PORT}`))
+server.listen(PORT , ()=>console.log(`Server Started At Port ${PORT}`))

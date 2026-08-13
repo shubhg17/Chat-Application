@@ -5,7 +5,7 @@ const OtherUser = ({ user }) => {
   const { selectedUser, onlineUsers } = useSelector((store) => store.user)
   const dispatch = useDispatch()
 
-  //yeh onlineUsers ek array hain jisme har online user ki id hain isme hota hain includes method aur yeh user tumhare voh user ha joh side bar pe dikh rhe hain 
+  //yeh onlineUsers ek array hain jisme har online user ki id hain and  array me hota hain includes method aur yeh user tumhare voh user ha joh side bar pe dikh rhe hain 
   const isOnline = onlineUsers?.includes(user?._id)
 
   const handleSelectedUser = (user) => {

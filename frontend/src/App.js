@@ -33,6 +33,7 @@ const appRouter = createBrowserRouter([
    },
 
 ])
+//Frontend me socket connection krne ke liye we import npm i socket.io-client for frontend
 
 function App() {
    const {authUser} = useSelector((store)=>store.user)
@@ -50,18 +51,19 @@ function App() {
            }
         })
 
-        //iss socket ko bhi hum apne store me add krenge
-        dispatch(setSocket(socket))
+       //hume yaha pe hamare voh onlineUsers chaiye toh tum normal state variable  se handle krskte ho ya tum redux se kr sktte ho  hume onlineUsers ko toh store me rkhenge hi hume apne socket ko bhi store me rkhna hota hain so humne ek aur slice banaliya socketSlice.js krke
+       
+       //iss socket ko bhi hum apne store me add krenge
+       dispatch(setSocket(socket))
 
-       //hume yaha pe hamare voh onlineUsers chaiye toh tum normal state variable  se handle krskte ho ya tum redux se kr sktte ho  hume onlineUsers ko toh store me rkhenge hi hume apne socket ko bhi store me rkhna hota hain so humne ek aur slice banaliya socketSlice.js krke 
        socket.on("getOnlineUsers" , (onlineUsers)=> {
           dispatch(setOnlineUsers(onlineUsers))
        })
        //cleanup useeffect
        return ()=>socket.close() // yeh socket.close() tumhare voh disconnect ko call krdega and fir usko run krega as jabh tum app ko chod ke jaoge then disconnect hojana chaiye 
      }
-     else { //mtlb authUser nhi hain merepas this is optional 
-       
+     else {
+       //mtlb lets say intially authUser null and socket null jabh loggedin hue authUser and socket me aya data then tum logout hogye so authUser toh null hojayega but socket me data fir bhi rhega toh usko bhi khali krenge voh kiya hain yaha
        if(socket) {
          socket.close();
          dispatch(setSocket(null))

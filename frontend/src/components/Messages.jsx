@@ -2,10 +2,10 @@ import React from "react"
 import Message from "./Message.jsx"
 import useGetMessages from "../customhook/useGetMessages.jsx"
 import {useSelector} from "react-redux"
+import useGetRealTimeMessages from "../customhook/useGetRealTimeMessages.jsx"
 const Messages = ()=> {
-    //  console.log("Messages Rendered");
     useGetMessages()
-    
+    useGetRealTimeMessages()
     const {messages}  = useSelector((store)=>store.message)
     if(!messages) return; //early return in react
     return (

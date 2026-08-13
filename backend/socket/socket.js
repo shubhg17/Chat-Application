@@ -3,6 +3,7 @@
 import {Server} from "socket.io"
 import express from "express"
 import http from "http"
+//iske baad hum server pe basically listen krte hain and app ham joh yaha banayenge voh use krenge index.js backend me index.js ke app ko use nhi krenge as hume socket ke app ko use krna hain express ke app ko nhi varna socket nhi chlega and hum apne server ke upar listen krenge naki app ke upar listen krenge 
 
 const app = express()
 const server = http.createServer(app)
@@ -14,6 +15,11 @@ const io = new Server(server, {
        credentials: true
    }
 })
+
+
+export const getReceiverSocketId = (receiverId)=> {
+    return userSocketMap[receiverId]
+}
 
 //so hum yaha ek map banayega map vohi dsa vala key value pairs jisme hum user ki id and uski socket id rkhenge and yeh sirf loggedin users ke liye hum banayenge logged out users ke liye nhi 
 
@@ -30,7 +36,8 @@ io.on("connection" , (socket)=>{
    //backend ne frontend pe pass krdiya 
    io.emit("getOnlineUsers" , Object.keys(userSocketMap))
 
-   //socket ke andar hame yeh disconnect milta hain jisko ese use krte hain yeh uske liye hain ki jabh user logout hoga nah 
+   //socket ke andar 
+   //hame yeh disconnect milta hain jisko ese use krte hain yeh uske liye hain ki jabh user logout hoga nah 
    socket.on("disconnect" , ()=> {
      console.log("user disconnected" , socket.id)
      delete userSocketMap[userId] // map se bhi hatayenge as map me ham sirf loggedinuser and unki socketids rkh rhe hain

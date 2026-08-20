@@ -41,7 +41,6 @@ export const sendMessage = async(req , res) => {
    //Jo changes maine gotConversation object me kiye hain, unhe database me bhi update kar do as gotConversation document ki ek copy ha joh hum gotConversation variable me hold kr rhe hain 
    await gotConversation.save()
 
-   //messages is not iterable ko fix krne ke liye yeh error 
 
    //After above now here we will implement SOCKET.IO
 //yeh mera getReceiverSocketId ek func hoga jiss se hum recevier ki socketid le ayenge iskohum socket.js me likhenge 

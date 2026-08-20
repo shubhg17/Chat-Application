@@ -10,7 +10,12 @@ import messageRoute from "./routes/messageRoute.js"
 import connectDB from "./config/database.js"
 import cookieParser from "cookie-parser"
 import {app , server} from "./socket/socket.js"
+//yeh path module nodejs me by default hota hain 
+import path from "path"
 // const app = express();
+
+//with this tume backend ka path miljayega folder ka joh hover krke arha hain or basically voh folder kaha ha laptop me 
+const _dirname = path.resolve()
 
 //middleware for form
 app.use(express.urlencoded({extended:true}))
@@ -32,5 +37,14 @@ app.use("/message" , messageRoute)
 const PORT = process.env.PORT || 9080;
 
 connectDB()
+
+//with this hum apni frontend ki files ko serve krenge using backend and here in path module join is a method where u first pass ur backend directoryname and second is frontend folder and /dist here dist tumhara create hoga jabh yeh deploy hoga usme tumhara sara code ajata hain 
+app.use(express.static(path.join(_dirname , "/frontend/build")))
+
+//* here represents sare routes ko chodke  and _ hum dalskte hain jese agar req ka koi use nhi hain toh yeh dalskte hain 
+app.get("/*splat" , (_ , res)=> {
+    //with this tumne apni index.html frontend file ko serve krdiya 
+    res.sendFile(path.resolve(_dirname , "frontend" , "build" , "index.html"))
+})
 
 server.listen(PORT , ()=>console.log(`Server Started At Port ${PORT}`))

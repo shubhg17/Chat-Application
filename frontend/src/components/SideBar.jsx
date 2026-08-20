@@ -24,7 +24,7 @@ function SideBar() {
 
    const handleLogOut = async () => {
       try {
-         const response = await axios.get("http://localhost:8080/user/logout")
+         const response = await axios.get("https://chat-application-cbai.onrender.com/user/logout")
          dispatch(setAuthUser(null))
          dispatch(setOtherUsers(null))
          navigate("/login")

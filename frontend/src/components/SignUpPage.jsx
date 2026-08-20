@@ -28,7 +28,7 @@ const SignUp = () => {
       try {
          //axios me joh data ata hain voh json m hi hota hain 
          //here second parameter voh hain joh hume hamare api me add krvana hain 
-         const response = await axios.post("http://localhost:8080/user/signup" , user , {
+         const response = await axios.post("https://chat-application-cbai.onrender.com/user/signup" , user , {
             //cors policy ka error nah aye isliye yeh sab pass krte hain 
              headers: {
                 "Content-Type" : "application/json"

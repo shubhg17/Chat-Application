@@ -17,7 +17,7 @@ const SendMessage = () => {
 
       //axios.get(url , config) here we dont give data
       //here we are sending message as {message} as in backend we are receving message as like this const {message} = req.body so here when we pass our message like {message} so it will keep our message in object format then no error will come thats it 
-       const response = await axios.post(`http://localhost:8080/message/send/${selectedUser?._id}` , {message} , {
+       const response = await axios.post(`https://chat-application-cbai.onrender.com/message/send/${selectedUser?._id}` , {message} , {
           //yeh headers pass krna optional hain but withCredentials dena important hain 
           headers: {
              "Content-Type" : "application/json"

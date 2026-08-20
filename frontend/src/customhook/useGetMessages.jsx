@@ -18,7 +18,7 @@ const useGetMessages = ()=> {
         try {
           //iske andar hum id pass krenge dynamic joh hogi basically hamare selecteduser ki and hume us particular user ka data miljayega jisko hum select krenge so data ko get krne ke liye yeh api call krenge getmessage ki joh banayi thi backend ke same vaha se data ajayega
            axios.defaults.withCredentials = true
-           const response  = await axios.get(`http://localhost:8080/message/${selectedUser?._id}`)
+           const response  = await axios.get(`https://chat-application-cbai.onrender.com/message/${selectedUser?._id}`)
            console.log(response)
            dispatch(setMessages(response.data))
         }

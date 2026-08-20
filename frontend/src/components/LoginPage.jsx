@@ -20,7 +20,7 @@ function LoginPage() {
       //  console.log(user)
 
       try {
-         const response = await axios.post("http://localhost:8080/user/login", user, {
+         const response = await axios.post("https://chat-application-cbai.onrender.com/user/login", user, {
             headers: {
                "Content-Type": "application/json"
             },

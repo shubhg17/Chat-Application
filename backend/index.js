@@ -24,7 +24,7 @@ app.use(cookieParser())
 
 //yeh hume banana padta ha as hume btana padta ha ki tum kaha se request mar rhe ho joh abhi origin hamara frontend hain as hum frontend origin se backend ke url pe request marenge 
 const corsOption = {
-    origin:"http://localhost:3000",
+    origin:"https://chat-application-cbai.onrender.com",
     credentials:true
 }
 

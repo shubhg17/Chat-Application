@@ -14,7 +14,7 @@ const useGetOtherUsers = () => {
        try {
         //yeh hume dalna pad rha ha as jis url pe hum networkcall krrhe hain usme humne ek inline middleware use kiya tha so jabh bhi ese inline middleware use krte hain toh yeh likhna padta hain 
           axios.defaults.withCredentials = true;
-          const response = await axios.get("http://localhost:8080/user")
+          const response = await axios.get("https://chat-application-cbai.onrender.com/user")
           // console.log(response)
           dispatch(setOtherUsers(response.data))
        }

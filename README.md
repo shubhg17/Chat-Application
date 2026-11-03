@@ -93,5 +93,3 @@ Configure the required environment variables before running the application. Nev
 
 **Shubham Ghai**
 
-- GitHub: [Your GitHub Profile](YOUR_GITHUB_PROFILE_URL)
-- LinkedIn: [Your LinkedIn Profile](YOUR_LINKEDIN_PROFILE_URL)

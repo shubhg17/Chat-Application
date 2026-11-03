@@ -36,14 +36,13 @@ chat-application/
 └── README.md
 ```
 
-*Note: Adjust the folder structure above to match your actual repository.*
 
 ## Installation & Setup
 
 ### 1. Clone the Repository
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
+git clone https://github.com/shubhg17/Chat-Application.git
 cd chat-application
 ```
 
